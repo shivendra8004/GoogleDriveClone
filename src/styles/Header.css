@@ -1,0 +1,26 @@
+.header {
+    display: flex;
+    height: 50px;
+    width: 100vw;
+    /* background-color: rgb(219, 219, 219); */
+    border-bottom: 1px solid rgb(219, 219, 219);
+}
+.header > div {
+    padding: 12px;
+}
+.header_logo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.header_logo > img {
+    height: 100%;
+    object-fit: contain;
+}
+.header_logo > span {
+    font-family: "PT Sans", sans-serif;
+    font-weight: 500;
+    color: rgb(84, 84, 84);
+    font-size: 20px;
+    margin-left: 12px;
+}
