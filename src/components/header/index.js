@@ -6,7 +6,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import AppsIcon from "@mui/icons-material/Apps";
 import GDriveIcon from "../../media/gdriveIcon.png";
 import "../../styles/Header.css";
-const index = () => {
+const index = ({ userPhoto }) => {
     return (
         <div className="header">
             <div className="header_logo">
@@ -26,7 +26,7 @@ const index = () => {
                     <SettingsIcon />
                 </span>
                 <AppsIcon />
-                <img src="" alt="User Profile" />
+                <img src={userPhoto} alt="User Profile" />
             </div>
         </div>
     );
