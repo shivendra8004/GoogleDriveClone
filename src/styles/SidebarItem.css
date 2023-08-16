@@ -15,5 +15,5 @@
 }
 .sidebarItem > .sidebarItem_main > p {
     margin: 0;
-    padding: 0;
+    margin-left: 12px;
 }
