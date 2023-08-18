@@ -6,20 +6,20 @@ import { getFirestore } from "firebase/firestore/lite";
 import { GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCoILFjg1FS7IrP85Fly9lbKu9QTkvG3GI",
-    authDomain: "drive-project-d5b85.firebaseapp.com",
-    projectId: "drive-project-d5b85",
-    storageBucket: "drive-project-d5b85.appspot.com",
-    messagingSenderId: "312642396494",
-    appId: "1:312642396494:web:610eacadd7cdbe55ff7e1f",
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_APP_ID,
 };
 
 const firebaseApp = initializeApp(firebaseConfig);
 
 const auth = getAuth(firebaseApp);
-// const db = getFirestore(firebaseApp);
+const dbCollection = getFirestore(firebaseApp);
 const db = getDatabase(firebaseApp);
 const storage = getStorage(firebaseApp);
 const provider = new GoogleAuthProvider();
 
-export { auth, provider, db, storage };
+export { auth, provider, db, storage, dbCollection };

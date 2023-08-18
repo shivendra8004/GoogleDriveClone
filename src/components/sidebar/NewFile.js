@@ -5,10 +5,10 @@ import Box from "@mui/material/Box";
 import { message } from "antd";
 import "../../styles/NewFile.css";
 // import firebase from "firebase";
-import firebase from "firebase/compat/app";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { ref as refD, push } from "firebase/database";
-import { storage, db } from "../../firebase";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore/lite";
+import { storage, db, dbCollection } from "../../firebase";
 
 const style = {
     position: "absolute",
@@ -43,10 +43,19 @@ const NewFile = () => {
                 const storeFile = selectedFiles[i];
                 const fileRef = ref(storage, `files/${storeFile.name}`);
                 const snapshot = await uploadBytes(fileRef, storeFile);
+
                 const downloadURL = await getDownloadURL(snapshot.ref);
                 try {
-                    const fileRef = refD(db, "files");
+                    const fileRef = refD(db, "myFiles");
                     push(fileRef, { fileUrl: downloadURL, timestamp: new Date().getTime() });
+
+                    const myFilesRef = collection(dbCollection, "myFiles");
+                    await addDoc(myFilesRef, {
+                        timestamp: serverTimestamp(),
+                        caption: storeFile.name,
+                        fileUrl: downloadURL,
+                        size: snapshot.metadata.size,
+                    });
                     message.success("File Uploaded!");
                     setUploading(false);
                     setOpen(false);
