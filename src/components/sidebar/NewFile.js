@@ -3,11 +3,11 @@ import AddIcon from "@mui/icons-material/Add";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import "../../styles/NewFile.css";
-
-import firebase from 'firebase/app';
-import 'firebase/storage'; // Import storage module
-import 'firebase/firestore'; // Import firestore module
-import { storageRef, db } from "../../firebase";
+// import firebase from "firebase";
+import firebase from "firebase/compat/app";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { ref as refD, push } from "firebase/database";
+import { storage, db } from "../../firebase";
 
 const style = {
     position: "absolute",
@@ -22,40 +22,44 @@ const style = {
 };
 const NewFile = () => {
     const [open, setOpen] = useState(false);
-    const [file, setFile] = useState(null);
     const [uploading, setUploading] = useState(false);
+    const [selectedFiles, setSelectedFiles] = useState([]);
+
+    const handleFilesUpload = (e) => {
+        const files = e.target.files;
+        const updatedSelectedImages = [];
+        for (let i = 0; i < files.length; i++) {
+            updatedSelectedImages.push(files[i]);
+        }
+        setSelectedFiles(updatedSelectedImages);
+    };
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    const handleChange = (e) => {
-        if (e.target.files[0]) {
-            setFile(e.target.files[0]);
-        }
-    };
-    const handleUpload = () => {
+    const handleChange = (e) => {};
+
+    const handleUpload = async () => {
         setUploading(true);
-        storageRef
-            .child(`files/${file.name}`)
-            .put(file)
-            .then((snapshot) => {
-                console.log(snapshot);
-                storageRef
-                    .child("files")
-                    .child(file.name)
-                    .getDownloadURL()
-                    .then((url) => {
-                        // Fixed typo "thrn" to "then"
-                        db.collection("myFiles").add({
-                            timestamp: firebase.firestore.FieldValue.serverTimestamp(), // Fixed reference to firestore.FieldValue
-                            caption: file.name,
-                            fileUrl: url,
-                            size: snapshot._delegate.bytesTransferred,
-                        });
-                        setUploading(false);
-                        setOpen(false);
-                        setFile(null);
-                    });
-            });
+        if (selectedFiles.length > 0) {
+            for (let i = 0; i < selectedFiles.length; i++) {
+                const storeFile = selectedFiles[i];
+                const fileRef = ref(storage, storeFile.name);
+                const snapshot = await uploadBytes(fileRef, storeFile);
+                const downloadURL = await getDownloadURL(snapshot.ref);
+                try {
+                    const fileRef = refD(db, "files");
+                    push(fileRef, { fileUrl: downloadURL, timestamp: new Date().getTime() });
+                    console.log("File Uploaded!");
+                    setUploading(false);
+                } catch (error) {
+                    setUploading(false);
+                    console.log("Error In Uploading File", error);
+                }
+            }
+        } else {
+            console.error("No Images Selected!");
+            setUploading(false);
+        }
     };
 
     return (
@@ -72,7 +76,7 @@ const NewFile = () => {
                             <p>Uploading...</p>
                         ) : (
                             <>
-                                <input type="file" onChange={handleChange} />
+                                <input type="file" multiple onChange={handleFilesUpload} />
                                 <button onClick={handleUpload}>Upload</button>
                             </>
                         )}
