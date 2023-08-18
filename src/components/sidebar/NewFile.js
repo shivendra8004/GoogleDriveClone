@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
+import { message } from "antd";
 import "../../styles/NewFile.css";
 // import firebase from "firebase";
 import firebase from "firebase/compat/app";
@@ -25,7 +26,7 @@ const NewFile = () => {
     const [uploading, setUploading] = useState(false);
     const [selectedFiles, setSelectedFiles] = useState([]);
 
-    const handleFilesUpload = (e) => {
+    const handleChange = (e) => {
         const files = e.target.files;
         const updatedSelectedImages = [];
         for (let i = 0; i < files.length; i++) {
@@ -33,32 +34,35 @@ const NewFile = () => {
         }
         setSelectedFiles(updatedSelectedImages);
     };
-
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    const handleChange = (e) => {};
-
     const handleUpload = async () => {
         setUploading(true);
         if (selectedFiles.length > 0) {
             for (let i = 0; i < selectedFiles.length; i++) {
                 const storeFile = selectedFiles[i];
-                const fileRef = ref(storage, storeFile.name);
+                const fileRef = ref(storage, `files/${storeFile.name}`);
                 const snapshot = await uploadBytes(fileRef, storeFile);
                 const downloadURL = await getDownloadURL(snapshot.ref);
                 try {
                     const fileRef = refD(db, "files");
                     push(fileRef, { fileUrl: downloadURL, timestamp: new Date().getTime() });
-                    console.log("File Uploaded!");
+                    message.success("File Uploaded!");
                     setUploading(false);
+                    setOpen(false);
+                    setSelectedFiles([]);
                 } catch (error) {
+                    setSelectedFiles([]);
+                    setOpen(false);
                     setUploading(false);
+                    message.error("Unable to upload files!");
                     console.log("Error In Uploading File", error);
                 }
             }
         } else {
-            console.error("No Images Selected!");
+            setOpen(false);
             setUploading(false);
+            message.warning("No files selected!");
         }
     };
 
@@ -76,7 +80,7 @@ const NewFile = () => {
                             <p>Uploading...</p>
                         ) : (
                             <>
-                                <input type="file" multiple onChange={handleFilesUpload} />
+                                <input type="file" multiple onChange={handleChange} />
                                 <button onClick={handleUpload}>Upload</button>
                             </>
                         )}
