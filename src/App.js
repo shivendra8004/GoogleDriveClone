@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Header from "./components/header/index";
 import Sidebar from "./components/sidebar/index";
+import FilesView from "./components/filesView/FilesView";
 function App() {
     const [user, setUser] = useState({
         displayName: "Shivendra Jat",
@@ -16,7 +17,10 @@ function App() {
     return (
         <div className="App">
             <Header userPhoto={user.photoURL} />
-            <Sidebar />
+            <div style={{ display: "flex" }}>
+                <Sidebar />
+                <FilesView />
+            </div>
             {/* If Authentication is true
 Header
 sidebar
