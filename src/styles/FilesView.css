@@ -1,0 +1,12 @@
+.filesview_titles {
+    width: 85vw;
+    display: flex;
+}
+.filesview_tiles_left {
+    width: 50%;
+}
+.filesview_tiles_right {
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+}
