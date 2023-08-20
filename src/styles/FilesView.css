@@ -7,6 +7,8 @@
     height: 250px;
     display: flex;
     align-items: center;
+    width: 100%;
+    overflow-x: scroll;
 }
 .filesview_titles {
     width: 100%;
