@@ -4,36 +4,49 @@ import Header from "./components/header/index";
 import Sidebar from "./components/sidebar/index";
 import FilesView from "./components/filesView/FilesView";
 import SideIcons from "./components/sideIcons/SideIcons";
+import GDriveIcon from "./media/gdriveIcon.png";
+import { auth, provider } from "./firebase";
+import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 function App() {
     const [state, setState] = useState(false);
-    const [user, setUser] = useState({
-        displayName: "Shivendra Jat",
-        email: "shivendrajat8004@gmail.com",
-        emailVarified: true,
-        phoneNumber: null,
-        photoURL:
-            "https://media.licdn.com/dms/image/C4D03AQG8Hh-jEAahKQ/profile-displayphoto-shrink_800_800/0/1662066004321?e=2147483647&v=beta&t=bOHAhDsneeZ5f6UO1bIk5aEUoFjuPoVGy528NZiV7OI",
-    });
-
+    const [user, setUser] = useState();
+    const handleLogin = () => {
+        if (!user) {
+            signInWithPopup(auth, provider)
+                .then((result) => {
+                    const credential = GoogleAuthProvider.credentialFromResult(result);
+                    const token = credential.accessToken;
+                    setUser(result.user);
+                })
+                .catch((error) => {
+                    const errorCode = error.code;
+                    const errorMessage = error.message;
+                    const email = error.customData.email;
+                    const credential = GoogleAuthProvider.credentialFromError(error);
+                    // ...
+                });
+        }
+    };
     // Authentication
     return (
         <div className="App">
-            <Header userPhoto={user.photoURL} />
-            <div style={{ display: "flex" }}>
-                <Sidebar state={state} setState={setState} />
-                <FilesView state={state} />
-                <SideIcons />
-            </div>
-            {/* If Authentication is true
-Header
-sidebar
-filesView
-Sideicon
-*/}
-            {/* 
-Authentication isfalse
-Login
-*/}
+            {user ? (
+                <>
+                    <Header userPhoto={user.photoURL} />
+                    <div style={{ display: "flex" }}>
+                        <Sidebar state={state} setState={setState} />
+                        <FilesView state={state} />
+                        <SideIcons />
+                    </div>
+                </>
+            ) : (
+                <>
+                    <div className="app_login">
+                        <img src={GDriveIcon} alt="Google Drive" />
+                        <button onClick={handleLogin}>Log in to Google Drive</button>
+                    </div>
+                </>
+            )}
         </div>
     );
 }
