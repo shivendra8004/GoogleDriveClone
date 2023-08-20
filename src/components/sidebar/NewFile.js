@@ -57,7 +57,7 @@ const NewFile = ({ state, setState }) => {
                         size: snapshot.metadata.size,
                     });
                     message.success("File Uploaded!");
-                    setState(!state);
+
                     setUploading(false);
                     setOpen(false);
                     setSelectedFiles([]);
@@ -69,6 +69,7 @@ const NewFile = ({ state, setState }) => {
                     console.log("Error In Uploading File", error);
                 }
             }
+            setState(!state);
         } else {
             setOpen(false);
             setUploading(false);

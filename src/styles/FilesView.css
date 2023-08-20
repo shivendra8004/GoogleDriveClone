@@ -1,12 +1,26 @@
-.filesview_titles {
+.filesview {
     width: 85vw;
+    height: 93vh;
+    overflow-y: scroll;
+}
+.filesview_row {
+    height: 250px;
     display: flex;
+    align-items: center;
+}
+.filesview_titles {
+    width: 100%;
+    display: flex;
+    margin-bottom: 5px;
+    color: rgb(85, 78, 78);
 }
 .filesview_tiles_left {
     width: 50%;
+    margin: 5px;
 }
 .filesview_tiles_right {
     width: 50%;
+    margin: 5px;
     display: flex;
     justify-content: space-around;
 }

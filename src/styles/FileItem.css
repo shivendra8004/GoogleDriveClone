@@ -2,7 +2,7 @@
     height: 55px;
     /* border-bottom: 1px solid rgb(219, 219, 219); */
     border-top: 1px solid rgb(219, 219, 219);
-    width: 85vw;
+    width: 100%;
 }
 .fileItem > a {
     text-decoration: none;
