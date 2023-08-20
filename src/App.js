@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./components/header/index";
 import Sidebar from "./components/sidebar/index";
 import FilesView from "./components/filesView/FilesView";
+import SideIcons from "./components/sideIcons/SideIcons";
 function App() {
     const [state, setState] = useState(false);
     const [user, setUser] = useState({
@@ -21,6 +22,7 @@ function App() {
             <div style={{ display: "flex" }}>
                 <Sidebar state={state} setState={setState} />
                 <FilesView state={state} />
+                <SideIcons />
             </div>
             {/* If Authentication is true
 Header

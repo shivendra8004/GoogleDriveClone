@@ -3,7 +3,7 @@ import AddIcon from "@mui/icons-material/Add";
 import CalenderIcon from "../../media/googlecalenderIcon.svg";
 import KeepIcon from "../../media/googlekeepIcon.svg";
 import TranslateIcon from "../../media/googletranslateIcon.svg";
-
+import "../../styles/SideIcons.css";
 const SideIcons = () => {
     return (
         <div className="sideIcons">
