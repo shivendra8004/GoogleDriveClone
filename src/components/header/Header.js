@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import SearchIcon from "@mui/icons-material/Search";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
@@ -6,7 +6,11 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import AppsIcon from "@mui/icons-material/Apps";
 import GDriveIcon from "../../media/gdriveIcon.png";
 import "../../styles/Header.css";
-const index = ({ userPhoto }) => {
+
+const Header = ({ user, setUser }) => {
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
     return (
         <div className="header">
             <div className="header_logo">
@@ -26,10 +30,17 @@ const index = ({ userPhoto }) => {
                     <SettingsIcon />
                 </span>
                 <AppsIcon />
-                <img src={userPhoto} alt="User Profile" />
+                <img onClick={handleOpen} src={user.photoURL} alt="User Profile" />
+            </div>
+            <div className="modal">
+                <div className="modal_content">
+                    <img src={user.photoURL} height={"60px"} width={"60px"} alt="" />
+                    <div className="email">{user.email}</div>
+                    <button onClick={() => setUser(null)}>Logout</button>
+                </div>
             </div>
         </div>
     );
 };
 
-export default index;
+export default Header;

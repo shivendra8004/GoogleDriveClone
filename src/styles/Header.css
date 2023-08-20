@@ -2,7 +2,6 @@
     display: flex;
     height: 6vh;
     width: 100vw;
-    /* background-color: rgb(219, 219, 219); */
     border-bottom: 1px solid rgb(219, 219, 219);
 }
 .header > div {
@@ -12,7 +11,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 10vw;
+    width: 11vw;
 }
 .header_logo > img {
     height: 100%;
@@ -77,4 +76,42 @@
     aspect-ratio: 1/1;
     object-fit: contain;
     margin-left: 5px;
+}
+.header > .modal {
+    box-sizing: border-box;
+    position: absolute;
+    top: 6vh;
+    left: calc(100% - 15vw);
+    width: 250px;
+    background-color: rgb(237, 242, 252);
+    border-radius: 10px;
+    padding: 20px;
+    z-index: 10;
+    box-shadow: 0px 0px 8px rgb(82, 82, 82);
+}
+.modal > .modal_content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.modal > .modal_content > img {
+    border-radius: 50%;
+    box-shadow: 0px 0px 4px rgb(82, 82, 82);
+    margin-bottom: 15px;
+}
+.modal > .modal_content > div {
+    margin-bottom: 15px;
+    font-size: 0.7rem;
+    color: rgb(67, 67, 67);
+    font-weight: 550;
+}
+.modal > .modal_content > button {
+    padding: 5px 10px;
+    background-color: transparent;
+    color: rgb(77, 133, 246);
+    border: 1px solid #000000;
+    border-radius: 15px;
+    font-weight: 550;
+    cursor: pointer;
 }

@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
-import Header from "./components/header/index";
+import Header from "./components/header/Header";
 import Sidebar from "./components/sidebar/index";
 import FilesView from "./components/filesView/FilesView";
 import SideIcons from "./components/sideIcons/SideIcons";
@@ -8,8 +8,9 @@ import GDriveIcon from "./media/gdriveIcon.png";
 import { auth, provider } from "./firebase";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 function App() {
+    const [isUserLogined, setUserLogined] = useState(false);
     const [state, setState] = useState(false);
-    const [user, setUser] = useState();
+    const [user, setUser] = useState(null);
     const handleLogin = () => {
         if (!user) {
             signInWithPopup(auth, provider)
@@ -17,6 +18,7 @@ function App() {
                     const credential = GoogleAuthProvider.credentialFromResult(result);
                     const token = credential.accessToken;
                     setUser(result.user);
+                    // localStorage.setItem("userLogined", true);
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -27,12 +29,13 @@ function App() {
                 });
         }
     };
+    useEffect(() => {});
     // Authentication
     return (
         <div className="App">
             {user ? (
                 <>
-                    <Header userPhoto={user.photoURL} />
+                    <Header user={user} setUser={setUser} />
                     <div style={{ display: "flex" }}>
                         <Sidebar state={state} setState={setState} />
                         <FilesView state={state} />
