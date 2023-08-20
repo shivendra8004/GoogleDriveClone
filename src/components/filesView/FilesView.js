@@ -3,7 +3,7 @@ import { collection, getDocs } from "firebase/firestore/lite";
 import { dbCollection } from "../../firebase";
 import FileItem from "./FileItem";
 import "../../styles/FilesView.css";
-const FilesView = () => {
+const FilesView = ({ state }) => {
     const [files, setFiles] = useState([]);
     useEffect(() => {
         const fetch = async () => {
@@ -22,7 +22,7 @@ const FilesView = () => {
             }
         };
         fetch();
-    }, []);
+    }, [state]);
     return (
         <div className="filesview">
             <div className="filesview_row"></div>

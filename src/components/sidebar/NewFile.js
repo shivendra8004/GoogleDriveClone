@@ -21,7 +21,7 @@ const style = {
     p: 4,
     borderRadius: "8px",
 };
-const NewFile = () => {
+const NewFile = ({ state, setState }) => {
     const [open, setOpen] = useState(false);
     const [uploading, setUploading] = useState(false);
     const [selectedFiles, setSelectedFiles] = useState([]);
@@ -57,6 +57,7 @@ const NewFile = () => {
                         size: snapshot.metadata.size,
                     });
                     message.success("File Uploaded!");
+                    setState(!state);
                     setUploading(false);
                     setOpen(false);
                     setSelectedFiles([]);

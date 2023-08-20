@@ -4,6 +4,7 @@ import Header from "./components/header/index";
 import Sidebar from "./components/sidebar/index";
 import FilesView from "./components/filesView/FilesView";
 function App() {
+    const [state, setState] = useState(false);
     const [user, setUser] = useState({
         displayName: "Shivendra Jat",
         email: "shivendrajat8004@gmail.com",
@@ -18,8 +19,8 @@ function App() {
         <div className="App">
             <Header userPhoto={user.photoURL} />
             <div style={{ display: "flex" }}>
-                <Sidebar />
-                <FilesView />
+                <Sidebar state={state} setState={setState} />
+                <FilesView state={state} />
             </div>
             {/* If Authentication is true
 Header

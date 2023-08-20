@@ -10,10 +10,10 @@ import NewFile from "./NewFile";
 import SidebarItems from "./SidebarItems";
 import "../../styles/Sidebar.css";
 
-const index = () => {
+const index = ({ state, setState }) => {
     return (
         <div className="sideBar">
-            <NewFile />
+            <NewFile state={state} setState={setState} />
             <div className="sideBar_itemsContainer">
                 <SidebarItems arrow={true} icon={<InsertDriveFileIcon />} label={"My Drive"} />
                 <SidebarItems arrow={true} icon={<ImportantDevicesIcon />} label={"Computers"} />
