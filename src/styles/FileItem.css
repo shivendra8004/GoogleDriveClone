@@ -1,28 +1,44 @@
 .fileItem {
-    height: 55px;
-    /* border-bottom: 1px solid rgb(219, 219, 219); */
-    border-top: 1px solid rgb(219, 219, 219);
-    width: 100%;
-}
-.fileItem > a {
-    text-decoration: none;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    height: 40px;
+    border-bottom: 1px solid rgb(219, 219, 219);
+    width: 100%;
+    font-size: 0.9rem;
+}
+.fileItem:hover {
+    background-color: rgb(237, 249, 252);
+    cursor: pointer;
+}
+.fileItem > .fileItem_left {
+    display: flex;
+    align-items: center;
+    justify-content: start;
     color: rgb(85, 78, 78);
     height: 100%;
+    width: 42.4%;
+    padding-left: 10px;
 }
-.fileItem > a:hover {
-    background-color: rgba(0, 0, 0, 0.04);
+.fileItem > .fileItem_left > p {
+    padding-left: 10px;
 }
-.fileItem > a > .fileItem_left {
+.fileItem > .fileItem_right {
+    width: 58.3%;
+    height: 100%;
     display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: rgb(85, 78, 78);
 }
-.fileItem > a > .fileItem_right {
-    width: 50%;
+.fileItem > .fileItem_right > p {
+    width: 15%;
     display: flex;
+    align-items: center;
     justify-content: space-around;
 }
-.fileItem > a > div > * {
-    margin: 10px;
+.fileItem_right > p > a {
+    text-decoration: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
 }

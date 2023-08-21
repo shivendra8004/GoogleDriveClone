@@ -1,6 +1,8 @@
 import React from "react";
 import "../../styles/FileItem.css";
 import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
@@ -16,18 +18,26 @@ const FileItem = ({ id, caption, timestamp, fileUrl, size }) => {
 
         return Math.max(fileSizeInBytes, 0.1).toFixed(1) + byteUnits[i];
     };
+
+    const handleDelete = () => {};
     return (
         <div className="fileItem">
-            <a href={fileUrl} target="_blank" download rel="noreferrer">
-                <div className="fileItem_left">
-                    <InsertDriveFileIcon />
-                    <p>{caption}</p>
-                </div>
-                <div className="fileItem_right">
-                    <p>{fileDate}</p>
-                    <p>{getReadableFileSizeString(size)}</p>
-                </div>
-            </a>
+            <div className="fileItem_left">
+                <InsertDriveFileIcon />
+                <p>{caption}</p>
+            </div>
+            <div className="fileItem_right">
+                <p>{fileDate}</p>
+                <p>{getReadableFileSizeString(size)}</p>
+                <p>
+                    <a href={fileUrl} target="_blank" download rel="noreferrer">
+                        <VisibilityIcon />
+                    </a>
+                </p>
+                <p>
+                    <DeleteIcon onClick={() => handleDelete()} />
+                </p>
+            </div>
         </div>
     );
 };

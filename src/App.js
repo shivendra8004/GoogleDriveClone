@@ -10,7 +10,6 @@ import { signInWithPopup } from "firebase/auth";
 import { message } from "antd";
 function App() {
     const [state, setState] = useState(false);
-    const [userInfo, setUserInfo] = useState(false);
     const [user, setUser] = useState(null);
     const handleLogin = () => {
         if (!user) {
@@ -36,7 +35,6 @@ function App() {
         const item = JSON.parse(localStorage.getItem("user"));
         setUser(item);
     }, []);
-    // Authentication
     return (
         <div className="App">
             {user ? (

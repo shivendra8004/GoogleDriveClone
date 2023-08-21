@@ -6,9 +6,8 @@ import { message } from "antd";
 import "../../styles/NewFile.css";
 // import firebase from "firebase";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { ref as refD, push } from "firebase/database";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore/lite";
-import { storage, db, dbCollection } from "../../firebase";
+import { storage, dbCollection } from "../../firebase";
 
 const style = {
     position: "absolute",
@@ -43,7 +42,6 @@ const NewFile = ({ state, setState, userEmail }) => {
                 const storeFile = selectedFiles[i];
                 const fileRef = ref(storage, `files/${userEmail}/${storeFile.name}`);
                 const snapshot = await uploadBytes(fileRef, storeFile);
-
                 const downloadURL = await getDownloadURL(snapshot.ref);
                 try {
                     const collectionName = `${userEmail}`;

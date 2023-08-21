@@ -30,12 +30,14 @@ const Header = ({ user, setUser }) => {
                 </div>
             </div>
             <div className="header_icons">
-                <span>
-                    <HelpOutlineOutlinedIcon />
-                    <SettingsIcon />
-                </span>
-                <AppsIcon />
-                <img onClick={handleClick} src={user.photoURL} alt="User Profile" />
+                <div className="header_icons_container">
+                    <span>
+                        <HelpOutlineOutlinedIcon />
+                        <SettingsIcon />
+                    </span>
+                    <AppsIcon />
+                    <img onClick={handleClick} src={user.photoURL} alt="User Profile" />
+                </div>
             </div>
             <div className="modal" style={{ display: `${open ? "block" : "none"}` }}>
                 <div className="modal_content">
