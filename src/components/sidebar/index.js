@@ -21,7 +21,6 @@ const index = ({ state, setState }) => {
                 <SidebarItems icon={<QueryBuilderIcon />} label={"Recent"} />
                 <SidebarItems icon={<StarBorderIcon />} label={"Starred"} />
                 <SidebarItems icon={<DeleteOutlinedIcon />} label={"Bin"} />
-                <hr />
                 <SidebarItems icon={<StorageIcon />} label={"Storage"} />
             </div>
         </div>

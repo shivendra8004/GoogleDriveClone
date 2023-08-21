@@ -2,16 +2,15 @@
     display: flex;
     height: 6vh;
     width: 100vw;
-    border-bottom: 1px solid rgb(219, 219, 219);
 }
 .header > div {
-    padding: 12px;
+    padding: 8px;
 }
 .header_logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 11vw;
+    width: 13vw;
 }
 .header_logo > img {
     height: 100%;
@@ -28,11 +27,11 @@
     flex: 1;
     display: flex;
     align-items: center;
-    padding: 8px;
+    padding: 10px;
 }
 .header_searchContainer > .header_searchBar {
-    width: 45%;
-    height: 120%;
+    width: 60%;
+    height: 130%;
     border-radius: 20px;
     background-color: rgb(237, 237, 237);
     display: flex;
@@ -68,20 +67,21 @@
 .header_icons > span {
     margin-right: 20px;
     display: flex;
+    align-items: center;
 }
 .header_icons > img {
     border-radius: 50%;
     box-shadow: 0px 0px 4px rgb(82, 82, 82);
-    height: 100%;
+    height: 120%;
     aspect-ratio: 1/1;
     object-fit: contain;
-    margin-left: 5px;
+    margin: 0 8px;
 }
 .header > .modal {
     box-sizing: border-box;
     position: absolute;
     top: 6vh;
-    left: calc(100% - 15vw);
+    left: 80%;
     width: 250px;
     background-color: rgb(237, 242, 252);
     border-radius: 10px;

@@ -11,6 +11,10 @@ const Header = ({ user, setUser }) => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const handleLogout = () => {
+        localStorage.removeItem("user");
+        setUser(null);
+    };
     return (
         <div className="header">
             <div className="header_logo">
@@ -36,7 +40,7 @@ const Header = ({ user, setUser }) => {
                 <div className="modal_content">
                     <img src={user.photoURL} height={"60px"} width={"60px"} alt="" />
                     <div className="email">{user.email}</div>
-                    <button onClick={() => setUser(null)}>Logout</button>
+                    <button onClick={handleLogout}>Logout</button>
                 </div>
             </div>
         </div>

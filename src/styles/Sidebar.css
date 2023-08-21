@@ -1,8 +1,8 @@
 .sideBar {
-    width: 15vw;
+    width: 17vw;
     height: 93vh;
     margin-right: 5px;
-    border-right: 1px solid rgb(197, 197, 197);
+    font-size: 0.9rem;
 }
 hr {
     background-color: rgb(197, 197, 197);

@@ -6,30 +6,35 @@ import FilesView from "./components/filesView/FilesView";
 import SideIcons from "./components/sideIcons/SideIcons";
 import GDriveIcon from "./media/gdriveIcon.png";
 import { auth, provider } from "./firebase";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signInWithPopup } from "firebase/auth";
+import { message } from "antd";
 function App() {
-    const [isUserLogined, setUserLogined] = useState(false);
     const [state, setState] = useState(false);
+    const [userInfo, setUserInfo] = useState(false);
     const [user, setUser] = useState(null);
     const handleLogin = () => {
         if (!user) {
             signInWithPopup(auth, provider)
                 .then((result) => {
-                    const credential = GoogleAuthProvider.credentialFromResult(result);
-                    const token = credential.accessToken;
-                    setUser(result.user);
-                    // localStorage.setItem("userLogined", true);
+                    const userInfo = result.user;
+                    const requiredInfo = {
+                        photoURL: userInfo.photoURL,
+                        email: userInfo.email,
+                    };
+                    localStorage.setItem("user", JSON.stringify(requiredInfo));
+                    setUser(JSON.parse(localStorage.getItem("user")));
+                    message.success("Successfully Logined");
                 })
                 .catch((error) => {
-                    const errorCode = error.code;
-                    const errorMessage = error.message;
-                    const email = error.customData.email;
-                    const credential = GoogleAuthProvider.credentialFromError(error);
-                    // ...
+                    message.error("There is an error in Login");
+                    console.error(error);
                 });
         }
     };
-    useEffect(() => {});
+    useEffect(() => {
+        const item = JSON.parse(localStorage.getItem("user"));
+        setUser(item);
+    }, []);
     // Authentication
     return (
         <div className="App">
