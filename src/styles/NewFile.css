@@ -18,3 +18,19 @@
     margin: 0;
     margin-left: 14px;
 }
+
+.input_div > .files {
+    opacity: 0;
+    width: 0.1px;
+    height: 0.1px;
+    position: absolute;
+}
+.input_div > .files_icon,
+.input_div > .files_text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #0066db;
+    font-weight: 500;
+}
