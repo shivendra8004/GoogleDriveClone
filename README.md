@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# Google Drive Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![Google Drive Clone](https://github.com/shivendra8004/GoogleDriveClone/blob/main/src/assets/logo.png)
 
-## Available Scripts
+Google Drive Clone is a web application built using React and Firebase that mimics the functionality of Google Drive. Users can upload, view, and delete files, as well as access their profile details and log out. The application is deployed and can be accessed [here](https://googledrive-eta.vercel.app/).
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+-   **File Upload:** Users can add single or multiple files at a time to their virtual drive.
+-   **File Listing:** Uploaded files are fetched and displayed using `useEffect` to update the UI.
+-   **File View:** Users can view uploaded files directly in the browser.
+-   **File Deletion:** Users have the ability to delete unwanted files.
+-   **User Profile:** Clicking on the user profile displays user details.
+-   **Logout:** Users can securely log out of the application.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Deployment
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The Google Drive Clone application is deployed using Vercel and can be accessed at [https://googledrive-eta.vercel.app/](https://googledrive-eta.vercel.app/).
 
-### `npm test`
+## Technologies Used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+-   React: A JavaScript library for building user interfaces.
+-   Firebase: A cloud-based platform for building web and mobile applications.
+-   Vercel: A platform for deploying web applications.
+-   CSS: Used for styling the user interface.
+-   [react-firebase-hooks](https://github.com/CSFrequency/react-firebase-hooks): A library for integrating Firebase with React hooks.
 
-### `npm run build`
+## Usage
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Visit [https://googledrive-eta.vercel.app/](https://googledrive-eta.vercel.app/) in your web browser.
+2. Sign up or log in to your account.
+3. Use the "Upload" button to add files to your virtual drive.
+4. The uploaded files will be listed on the main page.
+5. Click on a file to view its contents.
+6. To delete a file, click on the "Delete" button next to the file.
+7. Click on your user profile to see your details.
+8. To log out, click on the "Logout" button.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Local Development
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To run the application locally, follow these steps:
 
-### `npm run eject`
+1. Clone the repository: `git clone https://github.com/shivendra8004/GoogleDriveClone.git`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+2. Navigate to the project directory: `cd GoogleDriveClone`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. Install dependencies: `npm install`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+4. Create a Firebase project and set up authentication and storage.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+5. Create a `.env` file in the project root and add your Firebase configuration:
+   ###Sample `.env` file is
+   REACT_APP_FIREBASE_API_KEY=your_api_key
+   REACT_APP_FIREBASE_AUTH_DOMAIN=your_auth_domain
+   REACT_APP_FIREBASE_PROJECT_ID=your_project_id
+   REACT_APP_FIREBASE_STORAGE_BUCKET=your_storage_bucket
+   REACT_APP_FIREBASE_MESSAGING_SENDER_ID=your_messaging_sender_id
+   REACT_APP_FIREBASE_APP_ID=your_app_id
 
-## Learn More
+6. Start the development server: `npm start`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+7. Open your browser and navigate to [http://localhost:3000](http://localhost:3000).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Contributing
 
-### Code Splitting
+Contributions are welcome! If you find any issues or want to improve the application, please submit a pull request.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## License
 
-### Analyzing the Bundle Size
+This project is licensed under the [MIT License](https://github.com/shivendra8004/GoogleDriveClone/blob/main/LICENSE).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Feel free to explore the code and use the Google Drive Clone application for managing your files in a user-friendly way. If you have any questions or feedback, please don't hesitate to get in touch. Happy coding! 🚀
