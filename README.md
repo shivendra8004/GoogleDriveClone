@@ -1,6 +1,6 @@
 # Google Drive Clone
 
-![Google Drive Clone](https://github.com/shivendra8004/GoogleDriveClone/blob/main/src/assets/logo.png)
+![Google Drive Clone](https://github.com/shivendra8004/GoogleDriveClone/blob/64f4bfeb71e716594199781eeedcbd46e558e5ca/src/media/gdriveIcon.png)
 
 Google Drive Clone is a web application built using React and Firebase that mimics the functionality of Google Drive. Users can upload, view, and delete files, as well as access their profile details and log out. The application is deployed and can be accessed [here](https://googledrive-eta.vercel.app/).
 
