@@ -5,7 +5,8 @@
     border-radius: 0 100px 100px 0;
 }
 .sidebarItem:hover {
-    background-color: rgba(0, 0, 0, 0.04);
+    background-color: rgba(0, 0, 0, 0.08);
+    cursor: pointer;
 }
 .sidebarItem > .sidebarItem_arrow {
     width: 25px;

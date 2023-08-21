@@ -1,8 +1,10 @@
 .filesview {
     width: 100%;
-    height: 93vh;
+    height: 92vh;
     overflow-y: scroll;
     background-color: #ffffff;
+    border-radius: 20px 0 0 0;
+    margin-top: 1vh;
 }
 .filesview_row {
     height: 250px;
@@ -12,17 +14,34 @@
 }
 .filesview_titles {
     width: 100%;
-    display: flex;
-    margin-bottom: 5px;
-    color: rgb(85, 78, 78);
-}
-.filesview_tiles_left {
-    width: 50%;
-    margin: 5px;
-}
-.filesview_tiles_right {
-    width: 50%;
-    margin: 5px;
+    height: 5vh;
     display: flex;
     justify-content: space-around;
+    color: rgb(85, 78, 78);
+    border-top: 1px solid rgb(82, 82, 82);
+    border-bottom: 1px solid rgb(82, 82, 82);
+}
+.filesview_titles > p {
+    margin: 0;
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+    font-weight: 550;
+}
+.filesview_titles > .name {
+    margin-right: auto;
+    width: 40%;
+    justify-content: start;
+    padding-left: 50px;
+}
+.filesview_noFiles {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.filesview_noFiles > span {
+    display: block;
 }

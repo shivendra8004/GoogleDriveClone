@@ -28,22 +28,29 @@ const FilesView = ({ state, userEmail }) => {
     return (
         <div className="filesview">
             <div className="filesview_row">
-                {files.slice(0, 6)?.map(({ id, item }) => (
+                {files?.slice(0, 6)?.map(({ id, item }) => (
                     <FileCard key={id} name={item.caption} />
                 ))}
             </div>
             <div className="filesview_titles">
-                <div className="filesview_tiles_left">
-                    <p>Name</p>
-                </div>
-                <div className="filesview_tiles_right">
-                    <p>Last Modified</p>
-                    <p>File Size</p>
-                </div>
+                <p className="name">Name</p>
+                <p>Last Modified</p>
+                <p>File Size</p>
+                <p>View</p>
+                <p>Delete</p>
             </div>
-            {files?.map(({ id, item }) => (
-                <FileItem key={id} id={id} caption={item.caption} timestamp={item.timestamp} fileUrl={item.fileUrl} size={item.size} />
-            ))}
+            {files.length > 0 ? (
+                <>
+                    {files.map(({ id, item }) => (
+                        <FileItem key={id} id={id} caption={item.caption} timestamp={item.timestamp} fileUrl={item.fileUrl} size={item.size} />
+                    ))}
+                </>
+            ) : (
+                <div className="filesview_noFiles">
+                    <span>There are no files to display</span>
+                    <span>Add files using New button</span>
+                </div>
+            )}
         </div>
     );
 };
