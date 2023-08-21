@@ -21,7 +21,7 @@ const style = {
     p: 4,
     borderRadius: "8px",
 };
-const NewFile = ({ state, setState }) => {
+const NewFile = ({ state, setState, userEmail }) => {
     const [open, setOpen] = useState(false);
     const [uploading, setUploading] = useState(false);
     const [selectedFiles, setSelectedFiles] = useState([]);
@@ -41,15 +41,13 @@ const NewFile = ({ state, setState }) => {
         if (selectedFiles.length > 0) {
             for (let i = 0; i < selectedFiles.length; i++) {
                 const storeFile = selectedFiles[i];
-                const fileRef = ref(storage, `files/${storeFile.name}`);
+                const fileRef = ref(storage, `files/${userEmail}/${storeFile.name}`);
                 const snapshot = await uploadBytes(fileRef, storeFile);
 
                 const downloadURL = await getDownloadURL(snapshot.ref);
                 try {
-                    const fileRef = refD(db, "myFiles");
-                    push(fileRef, { fileUrl: downloadURL, timestamp: new Date().getTime() });
-
-                    const myFilesRef = collection(dbCollection, "myFiles");
+                    const collectionName = `${userEmail}`;
+                    const myFilesRef = collection(dbCollection, collectionName);
                     await addDoc(myFilesRef, {
                         timestamp: serverTimestamp(),
                         caption: storeFile.name,

@@ -43,6 +43,9 @@ const Header = ({ user, setUser }) => {
                         <CloseOutlinedIcon />
                     </div>
                     <img src={user.photoURL} height={"60px"} width={"60px"} alt="User" />
+                    <p className="" style={{ margin: "0", fontWeight: "500" }}>
+                        Hello {user.name}
+                    </p>
                     <div className="email">{user.email}</div>
                     <button onClick={handleLogout}>Logout</button>
                 </div>

@@ -20,6 +20,7 @@ function App() {
                     const requiredInfo = {
                         photoURL: userInfo.photoURL,
                         email: userInfo.email,
+                        name: userInfo.displayName,
                     };
                     localStorage.setItem("user", JSON.stringify(requiredInfo));
                     setUser(JSON.parse(localStorage.getItem("user")));
@@ -42,7 +43,7 @@ function App() {
                 <>
                     <Header user={user} setUser={setUser} />
                     <div style={{ display: "flex" }}>
-                        <Sidebar state={state} setState={setState} />
+                        <Sidebar state={state} setState={setState} userEmail={user.email} />
                         <FilesView state={state} />
                         <SideIcons />
                     </div>
