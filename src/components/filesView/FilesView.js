@@ -4,13 +4,14 @@ import { dbCollection } from "../../firebase";
 import FileItem from "./FileItem";
 import "../../styles/FilesView.css";
 import FileCard from "./FileCard";
-const FilesView = ({ state }) => {
+const FilesView = ({ state, userEmail }) => {
     const [files, setFiles] = useState([]);
     useEffect(() => {
         const fetch = async () => {
             const tempFiles = [];
             try {
-                const querySnapshot = await getDocs(collection(dbCollection, "myFiles"));
+                const collectionPath = `${userEmail}`;
+                const querySnapshot = await getDocs(collection(dbCollection, collectionPath));
                 querySnapshot.forEach((doc) => {
                     tempFiles.push({
                         id: doc.id,
