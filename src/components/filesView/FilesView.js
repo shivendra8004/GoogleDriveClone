@@ -28,7 +28,7 @@ const FilesView = ({ state, userEmail }) => {
     return (
         <div className="filesview">
             <div className="filesview_row">
-                {files?.slice(0, 6)?.map(({ id, item }) => (
+                {files?.slice(0, 5)?.map(({ id, item }) => (
                     <FileCard key={id} name={item.caption} />
                 ))}
             </div>
