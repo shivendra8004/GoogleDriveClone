@@ -42,7 +42,7 @@ function App() {
                     <Header user={user} setUser={setUser} />
                     <div style={{ display: "flex" }}>
                         <Sidebar state={state} setState={setState} userEmail={user.email} />
-                        <FilesView state={state} userEmail={user.email} />
+                        <FilesView state={state} setState={setState} userEmail={user.email} />
                         <SideIcons />
                     </div>
                 </>

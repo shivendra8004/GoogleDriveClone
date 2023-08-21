@@ -4,7 +4,7 @@ import { dbCollection } from "../../firebase";
 import FileItem from "./FileItem";
 import "../../styles/FilesView.css";
 import FileCard from "./FileCard";
-const FilesView = ({ state, userEmail }) => {
+const FilesView = ({ state, setState, userEmail }) => {
     const [files, setFiles] = useState([]);
     useEffect(() => {
         const fetch = async () => {
@@ -42,7 +42,17 @@ const FilesView = ({ state, userEmail }) => {
             {files.length > 0 ? (
                 <>
                     {files.map(({ id, item }) => (
-                        <FileItem key={id} id={id} caption={item.caption} timestamp={item.timestamp} fileUrl={item.fileUrl} size={item.size} />
+                        <FileItem
+                            key={id}
+                            id={id}
+                            caption={item.caption}
+                            timestamp={item.timestamp}
+                            fileUrl={item.fileUrl}
+                            size={item.size}
+                            userEmail={userEmail}
+                            state={state}
+                            setState={setState}
+                        />
                     ))}
                 </>
             ) : (
