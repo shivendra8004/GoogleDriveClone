@@ -25,6 +25,7 @@ const style = {
 const NewFile = ({ state, setState, userEmail }) => {
     const [open, setOpen] = useState(false);
     const [uploading, setUploading] = useState(false);
+    const [noOfFiles, setNoOfSelectedFile] = useState(0);
     const [selectedFiles, setSelectedFiles] = useState([]);
 
     const handleChange = (e) => {
@@ -33,6 +34,7 @@ const NewFile = ({ state, setState, userEmail }) => {
         for (let i = 0; i < files.length; i++) {
             updatedSelectedImages.push(files[i]);
         }
+        setNoOfSelectedFile(files.length);
         setSelectedFiles(updatedSelectedImages);
     };
     const handleOpen = () => setOpen(true);
@@ -122,6 +124,7 @@ const NewFile = ({ state, setState, userEmail }) => {
                                         <label className="files_text" htmlFor="files">
                                             Select a file to Upload
                                         </label>
+                                        <p>{noOfFiles} files selected</p>
                                     </div>
                                 )}
                             </form>
