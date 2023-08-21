@@ -4,12 +4,13 @@ import SearchIcon from "@mui/icons-material/Search";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import SettingsIcon from "@mui/icons-material/Settings";
 import AppsIcon from "@mui/icons-material/Apps";
+import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import GDriveIcon from "../../media/gdriveIcon.png";
 import "../../styles/Header.css";
 
 const Header = ({ user, setUser }) => {
     const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
+    const handleClick = () => setOpen(!open);
     const handleClose = () => setOpen(false);
     const handleLogout = () => {
         localStorage.removeItem("user");
@@ -34,11 +35,14 @@ const Header = ({ user, setUser }) => {
                     <SettingsIcon />
                 </span>
                 <AppsIcon />
-                <img onClick={handleOpen} src={user.photoURL} alt="User Profile" />
+                <img onClick={handleClick} src={user.photoURL} alt="User Profile" />
             </div>
-            <div className="modal">
+            <div className="modal" style={{ display: `${open ? "block" : "none"}` }}>
                 <div className="modal_content">
-                    <img src={user.photoURL} height={"60px"} width={"60px"} alt="" />
+                    <div className="CloseButton" onClick={handleClose}>
+                        <CloseOutlinedIcon />
+                    </div>
+                    <img src={user.photoURL} height={"60px"} width={"60px"} alt="User" />
                     <div className="email">{user.email}</div>
                     <button onClick={handleLogout}>Logout</button>
                 </div>

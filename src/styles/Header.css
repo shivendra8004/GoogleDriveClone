@@ -93,7 +93,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 }
 .modal > .modal_content > img {
     border-radius: 50%;
@@ -105,6 +104,21 @@
     font-size: 0.7rem;
     color: rgb(67, 67, 67);
     font-weight: 550;
+}
+.modal > .modal_content > .CloseButton {
+    position: absolute;
+    right: 5%;
+    top: 5%;
+    cursor: pointer;
+    padding: 2px;
+    aspect-ratio: 1/1;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+.modal > .modal_content > .CloseButton:hover {
+    background-color: rgb(220, 220, 220);
+    border-radius: 50%;
 }
 .modal > .modal_content > button {
     padding: 5px 10px;
