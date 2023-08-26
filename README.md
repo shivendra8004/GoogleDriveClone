@@ -15,7 +15,7 @@ Google Drive Clone is a web application built using React and Firebase that mimi
 
 ## Deployment
 
-The Google Drive Clone application is deployed using Vercel and can be accessed at [https://googledrive-eta.vercel.app/](https://googledrive-eta.vercel.app/).
+The Google Drive Clone application is deployed using Vercel and can be accessed at [https://googledrive-eta.vercel.app/](https://google-drive-clone-iota.vercel.app/).
 
 ## Technologies Used
 
@@ -27,7 +27,7 @@ The Google Drive Clone application is deployed using Vercel and can be accessed 
 
 ## Usage
 
-1. Visit [https://googledrive-eta.vercel.app/](https://googledrive-eta.vercel.app/) in your web browser.
+1. Visit [https://googledrive-eta.vercel.app/](https://google-drive-clone-iota.vercel.app/) in your web browser.
 2. Sign up or log in to your account.
 3. Use the "Upload" button to add files to your virtual drive.
 4. The uploaded files will be listed on the main page.
